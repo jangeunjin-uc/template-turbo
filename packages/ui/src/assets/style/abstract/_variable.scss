@@ -1,0 +1,60 @@
+/* color */
+// Black
+$black: #000;
+$black-80: rgba(0, 0, 0, 0.8);
+$black-60: rgba(0, 0, 0, 0.6);
+$black-40: rgba(0, 0, 0, 0.4);
+$black-20: rgba(0, 0, 0, 0.2);
+
+// White
+$white: #fff;
+$white-80: rgba(255, 255, 255, 0.8);
+$white-60: rgba(255, 255, 255, 0.6);
+$white-40: rgba(255, 255, 255, 0.4);
+$white-20: rgba(255, 255, 255, 0.2);
+
+// Gray
+$gray-100: #fafafa;
+$gray-150: #f6f6f6;
+$gray-200: #f2f2f2;
+$gray-300: #ebebeb;
+$gray-400: #e1e1e1;
+$gray-500: #cfcfcf;
+$gray-600: #bdbdbd;
+$gray-700: #909090;
+$gray-700d: #7e7e7e;
+$gray-600d: #606060;
+$gray-500d: #575757;
+$gray-400d: #494949;
+$gray-300d: #404040;
+$gray-200d: #2d2d2d;
+$gray-100d: #1b1b1b;
+
+// blue
+$blue-100: #a69cc4;
+$blue-200: #7c7299;
+$blue-300: #372275;
+$blue-400: #241158;
+
+// Alert
+$alert-green: #1cc100;
+$alert-red: #fb3b3b;
+$alert-blue: #1e90ff;
+$alert-yellow: #f8e00e;
+
+/* primary */
+// Primary
+$primary: #b57bf3;
+$primary-100: #8e4fd1;
+$primary-200: #5d3bc2;
+
+// secondary
+$secondary: #ffbf19;
+$secondary-100: #ffd055;
+
+/* Shadow */
+$shadow-2: 0 2px 4px rgba(0, 0, 0, 0.102);
+$shadow-4: 0 4px 8px rgba(0, 0, 0, 0.102);
+$shadow-8: 0 8px 12px rgba(0, 0, 0, 0.102);
+$shadow-12: 0 12px 16px rgba(0, 0, 0, 0.102);
+$shadow-16: 0 16px 20px rgba(0, 0, 0, 0.102);
