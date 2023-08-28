@@ -1,0 +1,48 @@
+@mixin flex-center($flex-direction) {
+  display: flex;
+  flex-direction: $flex-direction;
+  align-items: center;
+  justify-content: center;
+}
+
+@mixin font-12($ft-weight) {
+  line-height: 1.45;
+  font-size: 1.2rem;
+  font-weight: $ft-weight;
+  letter-spacing: -0.04px;
+}
+
+@mixin base-font-14($ft-weight) {
+  line-height: 1.45;
+  font-size: 1.4rem;
+  font-weight: $ft-weight;
+  letter-spacing: -0.04px;
+}
+
+@mixin font-16($ft-weight) {
+  line-height: 1.45;
+  font-size: 1.6rem;
+  font-weight: $ft-weight;
+  letter-spacing: -0.04px;
+}
+
+@mixin font-18($ft-weight) {
+  line-height: 1.45;
+  font-size: 1.8rem;
+  font-weight: $ft-weight;
+  letter-spacing: -0.04px;
+}
+
+@mixin border-01($border-color) {
+  border: 1px solid $border-color;
+}
+
+@mixin absolute-0 {
+  position: absolute;
+  inset: 0;
+}
+
+@mixin ellipse {
+  text-overflow: hidden;
+  white-space: nowrap;
+}
