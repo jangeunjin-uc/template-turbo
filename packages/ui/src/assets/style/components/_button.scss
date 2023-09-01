@@ -23,8 +23,11 @@
     font-size: inherit;
   }
 
-  &[data-size='xlarge'] {
-    padding: 0.6rem 2rem;
+  &[data-size='full'] {
+    width: 100%;
+    height: 100%;
+    padding: 0.6rem 0;
+    @include flex-center(row);
 
     .btn__label {
       line-height: 1.46;
@@ -106,6 +109,10 @@
       border-color: $blue-300;
       background-color: $blue-300;
     }
+
+    &[data-size='full'] {
+      border-radius: 0;
+    }
   }
 
   &[data-style-type='outline'] {
@@ -114,8 +121,8 @@
     background-color: $white;
 
     &[data-color='primary'] {
-      border-color: $primary;
-      color: $primary;
+      border-color: $primary-300;
+      color: $primary-300;
     }
 
     &[data-color='secondary'] {
@@ -136,7 +143,7 @@
     background-color: transparent;
 
     &[data-color='primary'] {
-      color: $primary;
+      color: $primary-300;
     }
 
     &[data-color='secondary'] {

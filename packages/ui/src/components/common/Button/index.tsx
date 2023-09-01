@@ -7,7 +7,7 @@ export interface ButtonProps extends Omit<ButtonHTMLAttributes<HTMLButtonElement
   label?: string;
   icon?: ReactNode;
   textIconPosition?: 'left' | 'right';
-  buttonSize?: 'xlarge' | 'large' | 'medium' | 'small';
+  buttonSize?: 'full' | 'large' | 'medium' | 'small';
   buttonColor?: 'primary' | 'secondary' | 'blue';
 }
 

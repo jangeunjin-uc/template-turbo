@@ -1,4 +1,6 @@
-import type { Preview } from '@storybook/react';
+import React from 'react';
+
+import { Preview } from '@storybook/react';
 import '../src/assets/style/index.scss';
 import 'ui/src/assets/style/index.scss';
 
@@ -12,6 +14,13 @@ const preview: Preview = {
       },
     },
   },
+  decorators: [
+    (Story) => (
+      <div className="storybook-wrapper">
+        <Story />
+      </div>
+    ),
+  ],
 };
 
 export default preview;
