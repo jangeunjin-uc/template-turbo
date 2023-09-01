@@ -1,0 +1,157 @@
+@use '../abstract/mixin' as *;
+@use '../abstract/variable' as *;
+
+.btn {
+  display: inline-block;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  border-radius: 0.4rem;
+  background: none;
+  cursor: pointer;
+  user-select: none;
+
+  &:disabled,
+  &[disabled] {
+    opacity: 0.6;
+    cursor: not-allowed;
+  }
+
+  &__label {
+    vertical-align: middle;
+    color: inherit;
+    font-size: inherit;
+  }
+
+  &[data-size='full'] {
+    width: 100%;
+    height: 100%;
+    padding: 0.6rem 0;
+    @include flex-center(row);
+
+    .btn__label {
+      line-height: 1.46;
+      font-size: 2rem;
+      font-weight: 700;
+    }
+  }
+
+  &[data-size='large'] {
+    padding: 0.6rem 1.6rem;
+
+    .btn__label {
+      line-height: 1.42;
+      font-size: 1.6rem;
+      font-weight: 600;
+    }
+  }
+
+  &[data-size='medium'] {
+    padding: 0.4rem 1rem;
+
+    .btn__label {
+      line-height: 1.4;
+      font-size: 1.4rem;
+      font-weight: 400;
+    }
+  }
+
+  &[data-size='small'] {
+    padding: 0.4rem 1.2rem;
+
+    .btn__label {
+      line-height: 1.4;
+      font-size: 1.2rem;
+      font-weight: 400;
+    }
+  }
+
+  &[data-variant='textOnly'] {
+    @include flex-center(column);
+  }
+
+  &[data-variant='iconOnly'] {
+    padding: 0.4rem 1.4rem;
+  }
+
+  &[data-variant='textIcon'] {
+    @include flex-center(row);
+
+    &[data-icon-position='left'] {
+      .btn__label {
+        margin-left: 0.4rem;
+      }
+    }
+
+    &[data-icon-position='right'] {
+      .btn__label {
+        margin-right: 0.4rem;
+      }
+    }
+  }
+
+  &[data-style-type='contained'] {
+    @include border-01(inherit);
+
+    color: $white;
+
+    &[data-color='primary'] {
+      border-color: $primary-300;
+      background-color: $primary-300;
+    }
+
+    &[data-color='secondary'] {
+      border-color: $secondary;
+      background-color: $secondary;
+    }
+
+    &[data-color='blue'] {
+      border-color: $blue-300;
+      background-color: $blue-300;
+    }
+
+    &[data-size='full'] {
+      border-radius: 0;
+    }
+  }
+
+  &[data-style-type='outline'] {
+    @include border-01(inherit);
+
+    background-color: $white;
+
+    &[data-color='primary'] {
+      border-color: $primary-300;
+      color: $primary-300;
+    }
+
+    &[data-color='secondary'] {
+      border-color: $secondary;
+      color: $secondary;
+    }
+
+    &[data-color='blue'] {
+      border-color: $blue-300;
+      color: $blue-300;
+    }
+  }
+
+  &[data-style-type='ghost'] {
+    @include border-01(inherit);
+
+    border-color: transparent;
+    background-color: transparent;
+
+    &[data-color='primary'] {
+      color: $primary-300;
+    }
+
+    &[data-color='secondary'] {
+      color: $secondary;
+    }
+
+    &[data-color='blue'] {
+      color: $blue-300;
+    }
+  }
+}

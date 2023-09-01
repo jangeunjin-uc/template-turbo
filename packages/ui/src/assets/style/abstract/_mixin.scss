@@ -34,7 +34,9 @@
 }
 
 @mixin border-01($border-color) {
-  border: 1px solid $border-color;
+  border-width: 1px;
+  border-style: solid;
+  border-color: $border-color;
 }
 
 @mixin absolute-0 {
