@@ -36,6 +36,5 @@
     "stylelint-order": "^6.0.3",
     "stylelint-scss": "^4.5.0"
   },
-  "packageManager": "pnpm@8.6.10",
-  "files": []
+  "packageManager": "pnpm@8.6.10"
 }

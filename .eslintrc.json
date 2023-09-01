@@ -91,6 +91,7 @@
     "node/no-missing-import": "off",
     "node/no-unsupported-features/es-syntax": "off",
     "node/no-unsupported-features/node-builtins": ["error", { "ignores": ["URL"] }],
+    "node/no-unpublished-import": "off",
     "no-param-reassign": "off",
     "no-use-before-define": "off",
     "no-underscore-dangle": "off",
