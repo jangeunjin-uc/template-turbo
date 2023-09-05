@@ -1,0 +1,39 @@
+.toast {
+  &-wrapper {
+    display: flex;
+    flex-direction: column;
+    position: fixed;
+    z-index: 101;
+    inset: auto 0 0;
+    transition: height 2s;
+  }
+
+  &-container {
+    position: relative;
+    height: 3.6rem;
+    margin-top: 0.5rem;
+    padding: 0 1.6rem;
+    border-radius: 1.8rem;
+    background: #000;
+    transition: bottom 0.3s linear;
+
+    &.isShow {
+      bottom: 2rem;
+    }
+
+    span {
+      display: block;
+      position: relative;
+      height: 100%;
+      line-height: 3.4rem;
+      color: #fff;
+      font-size: 1.4rem;
+      font-weight: 500;
+      white-space: nowrap;
+    }
+  }
+
+  &--button {
+    color: $white;
+  }
+}
