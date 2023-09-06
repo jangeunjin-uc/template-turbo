@@ -41,6 +41,7 @@
 
   &-close.btn {
     position: absolute;
+    z-index: 2;
     top: 0.8rem;
     right: 0.8rem;
   }
@@ -54,7 +55,6 @@
     box-shadow: 0 0 2px rgba(0, 0, 0, 0.1);
 
     &--title {
-      color: $white;
       @include base-font-14(700);
     }
   }

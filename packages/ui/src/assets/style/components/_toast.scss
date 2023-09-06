@@ -25,6 +25,7 @@
     border-radius: 1.8rem;
     background: #000;
     transition: bottom 0.3s linear;
+    gap: 4rem;
 
     &.isShow {
       bottom: 3rem;
@@ -45,12 +46,9 @@
   }
 
   &--button.btn {
-    border-bottom: 1px solid $white;
+    margin-right: -1rem;
     border-radius: 0;
     color: $white;
-
-    svg {
-      margin-top: 2px;
-    }
+    text-decoration: underline;
   }
 }

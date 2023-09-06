@@ -1,5 +1,6 @@
 import { CaretRight } from '@phosphor-icons/react';
 import classNames from 'classnames';
+import { SIZE_TYPE } from '../../../../types/constants';
 import Button from '../../Button';
 
 export interface ToastItemProps {
@@ -17,7 +18,7 @@ export default function ToastItem({ id, title, actions = undefined }: ToastItemP
           className="toast--button"
           variant="textIcon"
           buttonStyleType="ghost"
-          buttonSize="medium"
+          buttonSize={SIZE_TYPE.SMALL}
           label={actions.label}
           onClick={actions.action}
           textIconPosition="right"
