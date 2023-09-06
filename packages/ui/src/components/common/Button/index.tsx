@@ -1,6 +1,6 @@
 import classNames from 'classnames';
 import { ButtonHTMLAttributes, ForwardedRef, ReactNode, forwardRef } from 'react';
-import { SizeType } from '../../../types/constants';
+import { SIZE_TYPE, SizeType } from '../../../types/constants';
 
 export interface ButtonProps extends Omit<ButtonHTMLAttributes<HTMLButtonElement>, 'css'> {
   variant: 'textOnly' | 'iconOnly' | 'textIcon';
@@ -21,7 +21,7 @@ function Button(
     icon = undefined,
     buttonStyleType = undefined,
     textIconPosition = undefined,
-    buttonSize = undefined,
+    buttonSize = SIZE_TYPE.MEDIUM,
     buttonColor = undefined,
     ...rest
   }: ButtonProps,

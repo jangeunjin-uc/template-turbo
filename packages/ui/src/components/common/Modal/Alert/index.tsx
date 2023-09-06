@@ -1,3 +1,4 @@
+import { Smiley } from '@phosphor-icons/react';
 import classNames from 'classnames';
 import { ReactNode } from 'react';
 import Button from '../../Button';
@@ -14,7 +15,12 @@ export default function Alert({ children, className = '', onClose }: AlertProps)
   return (
     <div className={classNames('modal-alert', [className])}>
       <ModalHeader title="안내" />
-      <div className="modal-contents">{children}</div>
+      <div className="modal-contents">
+        <span className="modal-icon-wrapper">
+          <Smiley className="modal-alert--icon" />
+        </span>
+        {children}
+      </div>
       <ModalFooter>
         <Button
           className="modal-footer--button cancle"
