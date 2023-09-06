@@ -8,7 +8,7 @@ import Portal from '../Portal';
 export interface ModalProps {
   modalItem: {
     id: string;
-    className: string;
+    className?: string;
     content: ReactNode;
     size?: SizeType;
   }[];
