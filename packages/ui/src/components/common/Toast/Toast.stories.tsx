@@ -1,4 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react';
+import { useState } from 'react';
+import Button from '../Button';
 import ToastItem, { ToastItemProps } from './ToastItem';
 
 const meta: Meta<ToastItemProps> = {
@@ -34,11 +36,24 @@ export const Toast: Story = {
     actions: undefined,
   },
   argTypes,
-  render: (args) => (
-    <div className="toast-wrap">
-      <ToastItem {...args} />
-    </div>
-  ),
+  render: (args) => {
+    const [isShow, setIsShow] = useState<boolean>(false);
+
+    return (
+      <>
+        <Button
+          label="click to Show Toast"
+          buttonColor="primary"
+          buttonStyleType="contained"
+          variant="textOnly"
+          onClick={() => setIsShow((prev) => !prev)}
+        />
+        <div className="toast-wrap">
+          <ToastItem {...args} isShow={isShow} />
+        </div>
+      </>
+    );
+  },
 };
 
 export const ToastWithAction: Story = {
@@ -57,9 +72,22 @@ export const ToastWithAction: Story = {
       action: { control: false },
     },
   },
-  render: (args) => (
-    <div className="toast-wrap">
-      <ToastItem {...args} />
-    </div>
-  ),
+  render: (args) => {
+    const [isShow, setIsShow] = useState<boolean>(false);
+
+    return (
+      <>
+        <Button
+          label="toast with action"
+          variant="textOnly"
+          buttonStyleType="outline"
+          buttonColor="blue"
+          onClick={() => setIsShow((prev) => !prev)}
+        />
+        <div className="toast-wrap">
+          <ToastItem {...args} isShow={isShow} />
+        </div>
+      </>
+    );
+  },
 };
