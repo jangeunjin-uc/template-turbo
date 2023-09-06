@@ -1,5 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import { Bell } from '@phosphor-icons/react';
+import { SIZE_TYPE } from '../../../types/constants';
 import Button, { ButtonProps } from '.';
 
 const meta: Meta<ButtonProps> = {
@@ -31,7 +32,7 @@ const argTypes = {
     control: { type: 'radio' },
   },
   buttonSize: {
-    options: ['full', 'large', 'medium', 'small'],
+    options: [SIZE_TYPE.FULL, SIZE_TYPE.LARGE, SIZE_TYPE.MEDIUM, SIZE_TYPE.SMALL],
     control: { type: 'radio' },
   },
   icon: {
@@ -50,6 +51,7 @@ export const ButtonStyle: Story = {
     buttonStyleType: 'contained',
     textIconPosition: 'left',
     buttonColor: 'primary',
+    buttonSize: SIZE_TYPE.SMALL,
   },
   argTypes,
   render: (args) => <Button {...args} icon={<Bell size={20} />} label="label" />,
