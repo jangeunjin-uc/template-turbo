@@ -1,0 +1,54 @@
+@use '../abstract/mixin' as *;
+@use '../abstract/variable' as *;
+
+.toast {
+  &-wrap {
+    display: flex;
+    flex-direction: column;
+    position: fixed;
+    z-index: 101;
+    bottom: 0;
+    left: 2rem;
+    min-width: 10rem;
+    transition: height 2s;
+  }
+
+  &-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    position: relative;
+    bottom: 0;
+    height: 3.6rem;
+    margin-top: 0.5rem;
+    padding: 0 1.6rem;
+    border-radius: 1.8rem;
+    background: #000;
+    transition: bottom 0.3s linear;
+    gap: 4rem;
+
+    &.isShow {
+      bottom: 3rem;
+    }
+
+    span {
+      @include base-font-14(500);
+
+      display: flex;
+      flex: 1 1 auto;
+      align-items: center;
+      position: relative;
+      height: 100%;
+      margin-right: auto;
+      color: #fff;
+      white-space: nowrap;
+    }
+  }
+
+  &--button.btn {
+    margin-right: -1rem;
+    border-radius: 0;
+    color: $white;
+    text-decoration: underline;
+  }
+}
