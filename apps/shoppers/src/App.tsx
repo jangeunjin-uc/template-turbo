@@ -5,8 +5,13 @@ import SharedUI from './components/SharedUI';
 import { store } from './store';
 
 function App() {
-  const [toastShow, modalShow] = store(
-    ({ toast, modal }) => [toast.toastShow, modal.modalShow],
+  const [toastShow, modalShow, toggleDarkMode, isDark] = store(
+    ({ toast, modal, darkMode }) => [
+      toast.toastShow,
+      modal.modalShow,
+      darkMode.toggleDarkMode,
+      darkMode.isDark,
+    ],
     shallow,
   );
 
@@ -15,7 +20,14 @@ function App() {
   };
 
   const handleModalOpen = () => {
-    modalShow({ id: uuidv4(), content: <span>main에서 확인</span> });
+    modalShow({
+      id: uuidv4(),
+      content: <span style={{ padding: '2.5rem 2rem' }}>main에서 확인</span>,
+    });
+  };
+
+  const handleToggleDarkMode = () => {
+    toggleDarkMode({ isDark: !isDark });
   };
 
   return (
@@ -32,6 +44,13 @@ function App() {
         buttonStyleType="outline"
         label="toast open"
         onClick={handleToastShow}
+      />
+      <Button
+        variant="textOnly"
+        buttonStyleType="contained"
+        buttonColor="primary"
+        label="darkmode"
+        onClick={handleToggleDarkMode}
       />
       <SharedUI />
     </div>
