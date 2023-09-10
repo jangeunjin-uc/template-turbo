@@ -27,6 +27,9 @@ const argTypes = {
       control: false,
     },
   },
+  toastHide: {
+    control: false,
+  },
 };
 
 export const Toast: Story = {
@@ -34,6 +37,7 @@ export const Toast: Story = {
     id: 'toast-id',
     title: '기본 toast 안내 문구가 들어갑니다. /// text만 있는 경우 !',
     actions: undefined,
+    toastHide: undefined,
   },
   argTypes,
   render: (args) => {
@@ -48,9 +52,11 @@ export const Toast: Story = {
           variant="textOnly"
           onClick={() => setIsShow((prev) => !prev)}
         />
-        <div className="toast-wrap">
-          <ToastItem {...args} isShow={isShow} />
-        </div>
+        {isShow && (
+          <div className="toast-wrap">
+            <ToastItem {...args} />
+          </div>
+        )}
       </>
     );
   },
@@ -84,9 +90,11 @@ export const ToastWithAction: Story = {
           buttonColor="blue"
           onClick={() => setIsShow((prev) => !prev)}
         />
-        <div className="toast-wrap">
-          <ToastItem {...args} isShow={isShow} />
-        </div>
+        {isShow && (
+          <div className="toast-wrap">
+            <ToastItem {...args} />
+          </div>
+        )}
       </>
     );
   },
