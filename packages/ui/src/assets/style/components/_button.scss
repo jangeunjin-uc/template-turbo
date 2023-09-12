@@ -81,12 +81,14 @@
       font-weight: 400;
     }
 
-    &[data-icon-position='left'] {
-      padding-left: 0.2rem;
-    }
+    &[data-variant='textIcon'] {
+      &[data-icon-position='left'] {
+        padding-left: 0.8rem;
+      }
 
-    &[data-icon-position='right'] {
-      padding-right: 0.2rem;
+      &[data-icon-position='right'] {
+        padding-right: 0.8rem;
+      }
     }
   }
 
