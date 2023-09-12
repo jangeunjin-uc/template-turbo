@@ -74,6 +74,11 @@
             "position": "before"
           },
           {
+            "pattern": "@todolist/**",
+            "group": "internal",
+            "position": "before"
+          },
+          {
             "pattern": "@shoppers/**",
             "group": "internal",
             "position": "before"
@@ -115,7 +120,11 @@
     "import/resolver": {
       "typescript": {
         "alwaysTryTypes": true,
-        "project": ["apps/shoppers/tsconfig.json", "apps/template/tsconfig.json"]
+        "project": [
+          "apps/shoppers/tsconfig.json",
+          "apps/template/tsconfig.json",
+          "apps/todolist/tsconfig.json"
+        ]
       }
     }
   },
