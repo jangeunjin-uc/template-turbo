@@ -4,7 +4,7 @@ import { SIZE_TYPE } from '../../../types/constants';
 import Button, { ButtonProps } from '.';
 
 const meta: Meta<ButtonProps> = {
-  title: '@ui/components/Button',
+  title: '@ui/components/common/Button',
   component: Button,
 };
 
