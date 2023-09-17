@@ -1,7 +1,7 @@
 import type { Meta, StoryObj } from '@storybook/react';
-import CheckBox, { CheckBoxProps } from '.';
-import { SIZE_TYPE } from '../../../types/constants';
 import { useState } from 'react';
+import { SIZE_TYPE } from '../../../types/constants';
+import CheckBox, { CheckBoxProps } from '.';
 
 const meta: Meta<CheckBoxProps> = {
   title: '@ui/components/form/CheckBox',
