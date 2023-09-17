@@ -4,7 +4,7 @@ import Button from '../Button';
 import ToastItem, { ToastItemProps } from './ToastItem';
 
 const meta: Meta<ToastItemProps> = {
-  title: '@ui/components/Toast',
+  title: '@ui/components/common/Toast',
   component: ToastItem,
 };
 
