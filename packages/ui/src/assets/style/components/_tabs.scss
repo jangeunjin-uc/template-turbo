@@ -1,0 +1,37 @@
+@use '../abstract/variable' as *;
+
+.tabs-wrap {
+  &.basic {
+    display: block;
+    position: relative;
+
+    .tab {
+      border: 1px solid $white;
+      border-bottom-width: 0;
+      border-top-left-radius: 8px;
+      border-top-right-radius: 8px;
+      color: $primary;
+
+      &-area {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+      }
+
+      &.active {
+        border-color: $primary;
+        background-color: $primary;
+        font-weight: 700;
+
+        .tab--button {
+          color: $white;
+          font-weight: 700;
+        }
+      }
+
+      &-panel {
+        border-top: 1px solid $primary;
+      }
+    }
+  }
+}

@@ -1,6 +1,6 @@
-import { store } from '@todolist/store';
 import { Modal, Toast } from 'ui';
 import { shallow } from 'zustand/shallow';
+import { store } from '@todolist/store';
 
 function SharedUI() {
   const [isModalShow, modalItem, modalHide, isToastShow, toastItem, toastHide] = store(

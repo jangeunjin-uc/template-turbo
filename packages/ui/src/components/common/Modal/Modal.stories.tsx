@@ -7,7 +7,7 @@ import Confirm from './Confirm';
 import Modal, { ModalProps } from '.';
 
 const meta: Meta<ModalProps> = {
-  title: '@ui/components/Modal',
+  title: '@ui/components/common/Modal',
   component: Modal,
 };
 
