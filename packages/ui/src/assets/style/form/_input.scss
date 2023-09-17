@@ -1,16 +1,27 @@
-@use '../abstract/mixin';
-@use '../abstract/variable';
+@use '../abstract/mixin' as *;
+@use '../abstract/variable' as *;
 
 .input {
+  outline: 0;
+  border: 0;
+  display: inline-block;
+  height: 100%;
+  flex: 1 1 auto;
+
   &-container {
-    display: inline-block;
+    display: inline-flex;
+    flex-wrap: wrap;
+    align-items: center;
 
     &[data-size='full'] {
       width: 100%;
+      .input-wrap {
+        flex: 1 1 auto;
+      }
     }
 
     &[data-size='large'] {
-      .input {
+      .input-wrap {
         padding: 0.6rem 0.8rem;
         line-height: 1.42;
         font-size: 1.6rem;
@@ -24,7 +35,7 @@
     }
 
     &[data-size='medium'] {
-      .input {
+      .input-wrap {
         padding: 0.4rem 0.6rem;
         line-height: 1.4;
         font-size: 1.4rem;
@@ -38,7 +49,7 @@
     }
 
     &[data-size='small'] {
-      .input {
+      .input-wrap {
         padding: 0.2rem 0.4rem;
         line-height: 1.4;
         font-size: 1.2rem;
@@ -52,19 +63,20 @@
     }
 
     &[data-style-type='contained'] {
-      .input {
+      .input-wrap {
         border-radius: 4px;
       }
     }
 
     &[data-style-type='rounded'] {
-      .input {
-        border-radius: 50%;
+      .input-wrap {
+        border-radius: 5rem;
       }
     }
 
     &[data-style-type='underline'] {
-      .input {
+      .input-wrap {
+        border-width: 0;
         border-bottom-width: 1px;
         border-bottom-style: solid;
       }
@@ -88,17 +100,46 @@
       }
     }
 
-    .error,
-    .description {
-      margin-top: 0.6rem;
-      background-color: $gray-600d;
-      line-height: 1.4;
-      font-size: 1.2rem;
-
-      .icon.info {
-        font-size: 0.8em;
+    &[data-variant='withButton'] {
+      .input-wrap {
+        padding-top: 0;
+        padding-bottom: 0;
+        padding-right: 0;
+      }
+      .btn {
+        border-top-right-radius: 0;
+        border-bottom-right-radius: 0;
+        flex: none;
       }
     }
+
+    .error,
+    .description {
+      margin-top: 0.3rem;
+      color: $gray-500d;
+      line-height: 1.4;
+      font-size: 1.2rem;
+      width: 100%;
+      flex: none;
+
+      .icon.info {
+        font-size: 1em;
+        vertical-align: middle;
+        margin-right: 0.3rem;
+      }
+    }
+  }
+  &-wrap {
+    border-width: 1px;
+    border-style: solid;
+    overflow: hidden;
+    display: inline-flex;
+    flex-wrap: nowrap;
+    flex-direction: row;
+    align-items: center;
+  }
+  &-label {
+    margin-right: 0.4rem;
   }
 
   &--error {

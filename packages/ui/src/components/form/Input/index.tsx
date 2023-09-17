@@ -44,26 +44,26 @@ function Input({
   ...rest
 }: InputProps) {
   return (
-    <div className={classNames('input-container', { 'input--error': error }, className)}>
-      <span
-        className="input-wrap"
-        data-variant={variant}
-        data-style-type={inputStyleType}
-        data-size={inputSize}
-        data-color={inputColor}
-      >
-        {variant !== 'inputOnly' && (
-          <label htmlFor={id} className="input-label">
-            {label}
-          </label>
-        )}
+    <div
+      className={classNames('input-container', { 'input--error': error }, className)}
+      data-variant={variant}
+      data-style-type={inputStyleType}
+      data-size={inputSize}
+      data-color={inputColor}
+    >
+      {variant !== 'inputOnly' && (
+        <label htmlFor={id} className="input-label">
+          {label}
+        </label>
+      )}
+      <span className="input-wrap">
         <input name={id} className="input" {...rest} />
         {variant === 'withButton' && (
           <Button
             {...buttonProps}
             variant="textOnly"
             buttonStyleType="contained"
-            buttonSize={inputSize}
+            buttonSize={inputSize === 'full' ? 'large' : inputSize}
             buttonColor={inputColor}
             onClick={onClickButton}
           />

@@ -62,7 +62,7 @@ export const InputStyle: Story = {
     buttonProps: {
       label: '버튼',
       variant: 'textOnly',
-      textIconPosition: 'left',
+      textIconPosition: undefined,
     },
   },
   argTypes,
