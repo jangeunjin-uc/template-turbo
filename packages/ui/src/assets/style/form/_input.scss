@@ -2,11 +2,25 @@
 @use '../abstract/variable' as *;
 
 .input {
-  outline: 0;
-  border: 0;
   display: inline-block;
-  height: 100%;
   flex: 1 1 auto;
+  height: 100%;
+  border: 0;
+  outline: 0;
+  background-color: transparent;
+
+  &-label {
+    margin-right: 0.4rem;
+  }
+
+  &-wrap {
+    display: inline-flex;
+    flex-flow: row nowrap;
+    align-items: center;
+    overflow: hidden;
+    border-width: 1px;
+    border-style: solid;
+  }
 
   &-container {
     display: inline-flex;
@@ -15,8 +29,10 @@
 
     &[data-size='full'] {
       width: 100%;
+
       .input-wrap {
         flex: 1 1 auto;
+        background-color: $white;
       }
     }
 
@@ -82,20 +98,26 @@
       }
     }
 
+    &[data-color='default'] {
+      .input-wrap {
+        border-color: #000;
+      }
+    }
+
     &[data-color='primary'] {
-      .input {
+      .input-wrap {
         border-color: $primary;
       }
     }
 
     &[data-color='secondary'] {
-      .input {
+      .input-wrap {
         border-color: $secondary;
       }
     }
 
     &[data-color='blue'] {
-      .input {
+      .input-wrap {
         border-color: $blue-300;
       }
     }
@@ -103,52 +125,42 @@
     &[data-variant='withButton'] {
       .input-wrap {
         padding-top: 0;
-        padding-bottom: 0;
         padding-right: 0;
+        padding-bottom: 0;
       }
+
       .btn {
+        flex: none;
         border-top-right-radius: 0;
         border-bottom-right-radius: 0;
-        flex: none;
       }
     }
 
     .error,
     .description {
-      margin-top: 0.3rem;
-      color: $gray-500d;
-      line-height: 1.4;
-      font-size: 1.2rem;
-      width: 100%;
       flex: none;
+      width: 100%;
+      margin-top: 0.3rem;
+      line-height: 1.4;
+      color: $gray-500d;
+      font-size: 1.2rem;
 
       .icon.info {
-        font-size: 1em;
-        vertical-align: middle;
         margin-right: 0.3rem;
+        vertical-align: middle;
+        font-size: 1em;
       }
     }
-  }
-  &-wrap {
-    border-width: 1px;
-    border-style: solid;
-    overflow: hidden;
-    display: inline-flex;
-    flex-wrap: nowrap;
-    flex-direction: row;
-    align-items: center;
-  }
-  &-label {
-    margin-right: 0.4rem;
-  }
 
-  &--error {
-    .input {
-      border-color: $alert-red;
-    }
+    &.input--error {
+      .input-wrap {
+        border-color: $alert-red;
+        background-color: rgba(255, 192, 218, 0.4);
+      }
 
-    .error {
-      color: $alert-red;
+      .error {
+        color: $alert-red;
+      }
     }
   }
 }

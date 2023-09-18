@@ -11,7 +11,7 @@ export interface InputProps extends Omit<InputHTMLAttributes<HTMLInputElement>, 
   inputStyleType?: 'rounded' | 'contained' | 'underline';
   label?: string;
   inputSize?: SizeType;
-  inputColor?: 'primary' | 'secondary' | 'blue';
+  inputColor?: 'primary' | 'secondary' | 'blue' | 'default';
   error?: string;
   description?: string;
   onClickButton?: () => void;
@@ -31,7 +31,7 @@ function Input({
   inputStyleType = 'contained',
   label = undefined,
   inputSize = SIZE_TYPE.MEDIUM,
-  inputColor = undefined,
+  inputColor = 'default',
   onClickButton = undefined,
   error = undefined,
   description = undefined,
@@ -64,7 +64,7 @@ function Input({
             variant="textOnly"
             buttonStyleType="contained"
             buttonSize={inputSize === 'full' ? 'large' : inputSize}
-            buttonColor={inputColor}
+            buttonColor={inputColor === 'default' ? 'primary' : inputColor}
             onClick={onClickButton}
           />
         )}

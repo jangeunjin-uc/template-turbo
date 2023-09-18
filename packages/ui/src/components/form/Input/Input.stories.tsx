@@ -30,7 +30,7 @@ const argTypes = {
     control: { type: 'radio' },
   },
   inputColor: {
-    options: ['primary', 'secondary', 'blue'],
+    options: ['primary', 'secondary', 'blue', 'default'],
     control: { type: 'radio' },
   },
   error: {
@@ -56,7 +56,7 @@ export const InputStyle: Story = {
     label: 'label',
     inputSize: SIZE_TYPE.LARGE,
     inputColor: 'primary',
-    error: 'error',
+    error: undefined,
     description: '입력해주세요',
     onClickButton: () => {},
     buttonProps: {
