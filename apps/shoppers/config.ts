@@ -1,7 +1,3 @@
-import * as dotenv from 'dotenv';
-
-dotenv.config();
-
 export const firebaseConfig = {
   apiKey: import.meta.env.Firebase_API_KEY,
   authDomain: import.meta.env.Firebase_AUTH_DOMAIN,
