@@ -1,0 +1,48 @@
+@use '../abstract/variable' as *;
+@use '../abstract/mixin' as *;
+
+.header {
+  padding: 2rem 0;
+  width: 100%;
+  height: 8rem;
+  max-width: $desktop-max-width;
+  margin: 0 auto;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+  .logo {
+    flex: none;
+    .title {
+      margin-right: 0.4rem;
+      display: inline-block;
+      vertical-align: middle;
+      font-family: 'Fuggles', cursive;
+      color: $white;
+      font-size: 2.4rem;
+      font-weight: 700;
+      line-height: 1.45;
+    }
+    @include imageWrapper(2, 2);
+  }
+  &-rnb {
+    margin-left: auto;
+    margin-right: 1rem;
+    flex: none;
+    nav {
+      display: flex;
+      gap: 1.2rem;
+    }
+    .rnb--link {
+      display: inline-block;
+      text-decoration: none;
+      color: $white;
+      strong {
+        @include base-font-14(700);
+      }
+    }
+  }
+}
