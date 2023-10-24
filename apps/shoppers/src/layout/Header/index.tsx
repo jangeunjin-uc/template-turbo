@@ -1,6 +1,16 @@
+import { SignIn, SignOut } from '@phosphor-icons/react';
 import { Link } from 'react-router-dom';
+import { Button } from 'ui';
+import { shallow } from 'zustand/shallow';
+import useOathSignIn from '@shoppers/hook/useOauthSignIn';
+import { store } from '@shoppers/store';
 
 export default function Header() {
+  const [isLogin, userInfo] = store(({ users }) => [users.isLogin, users.userInfo], shallow);
+  const handleClickSignIn = () => {
+    useOathSignIn();
+  };
+
   return (
     <header className="header">
       <h1 className="logo">
@@ -23,6 +33,28 @@ export default function Header() {
           <Link to="/carts" className="rnb--link">
             <strong>My Cart</strong>
           </Link>
+          <div className="rnb-login">
+            {isLogin && (
+              <>
+                {userInfo.map((user) => (
+                  <div className="rnb-profile">
+                    <a className="profile-avatar" href="/">
+                      <img src={user.photoUrl} alt="프로필" />
+                      <span className="hidden">프로필영역</span>
+                    </a>
+                  </div>
+                ))}
+              </>
+            )}
+            <Button
+              className="btn-rnb-login"
+              label={isLogin ? 'SignOut' : 'SignIn'}
+              variant="textIcon"
+              textIconPosition="right"
+              icon={isLogin ? <SignOut /> : <SignIn />}
+              onClick={handleClickSignIn}
+            />
+          </div>
         </nav>
       </div>
     </header>

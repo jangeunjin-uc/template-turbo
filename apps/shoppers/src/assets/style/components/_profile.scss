@@ -1,0 +1,14 @@
+.profile {
+  &-avatar {
+    display: block;
+    width: 1em;
+    height: 1em;
+    border-radius: 100%;
+    overflow: hidden;
+    img {
+      display: block;
+      width: 100%;
+      height: auto;
+    }
+  }
+}
