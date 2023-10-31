@@ -1,15 +1,23 @@
 import { SignIn, SignOut } from '@phosphor-icons/react';
+import { useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { Button } from 'ui';
 import { shallow } from 'zustand/shallow';
-import useOathSignIn from '@shoppers/hook/useOauthSignIn';
+import useOathSignIn, { useAuthStateChange } from '@shoppers/hook/useOauthSignIn';
 import { store } from '@shoppers/store';
 
 export default function Header() {
-  const [isLogin, userInfo] = store(({ users }) => [users.isLogin, users.userInfo], shallow);
+  const [isLogin, userInfo, setInfo] = store(
+    ({ users }) => [users.isLogin, users.userInfo, users.setInfo],
+    shallow,
+  );
   const handleClickSignIn = () => {
     useOathSignIn();
   };
+
+  useEffect(() => {
+    useAuthStateChange(setInfo);
+  }, [isLogin]);
 
   return (
     <header className="header">
@@ -37,9 +45,9 @@ export default function Header() {
             {isLogin && (
               <>
                 {userInfo.map((user) => (
-                  <div className="rnb-profile">
+                  <div className="rnb-profile" key={user.id}>
                     <a className="profile-avatar" href="/">
-                      <img src={user.photoUrl} alt="프로필" />
+                      <img src={user.photoUrl} alt="프로필" referrerPolicy="no-referrer" />
                       <span className="hidden">프로필영역</span>
                     </a>
                   </div>

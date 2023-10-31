@@ -1,9 +1,16 @@
-import { GoogleAuthProvider, signInWithPopup } from '@firebase/auth';
+import {
+  GoogleAuthProvider,
+  getAuth,
+  signInWithPopup,
+  signOut,
+  onAuthStateChanged,
+} from '@firebase/auth';
 import { v4 as uuidv4 } from 'uuid';
 import { store } from '@shoppers/store';
+import { UserInfoType, emptyUsersInfo } from '@shoppers/types/user';
 import { firebaseAuth } from '../../firebase.config';
 
-const useSignIn = () => {
+const useSignIn = async () => {
   const googleProvider = new GoogleAuthProvider();
 
   const {
@@ -11,32 +18,18 @@ const useSignIn = () => {
     users: { setInfo },
   } = store.getState();
 
-  signInWithPopup(firebaseAuth, googleProvider)
+  await signInWithPopup(firebaseAuth, googleProvider)
     .then((result) => {
-      const credential = GoogleAuthProvider.credentialFromResult(result);
-      const token = credential?.accessToken;
-
       const { user } = result;
 
-      const userInfo = JSON.stringify({
-        email: user.email,
-        name: user.displayName,
-        photoUrl: user.photoURL,
-        providerId: user.providerId,
-        creationTime: user.metadata.creationTime,
-        lastSiginTime: user.metadata.lastSignInTime,
-        token,
-      });
-
-      localStorage.setItem('shoppers_user_info', userInfo);
       setInfo({
+        id: uuidv4(),
         email: user.email || '',
         name: user.displayName || '',
         photoUrl: user.photoURL || '',
         providerId: user.providerId,
         creationTime: user.metadata.creationTime || '',
         lastSiginTime: user.metadata.lastSignInTime || '',
-        token: token || '',
       });
       toastShow({ id: `toast-login--success-${uuidv4()}`, title: '성공적으로 로그인되었습니다.' });
     })
@@ -49,14 +42,53 @@ const useSignIn = () => {
     });
 };
 
-const useSignOut = () => {};
+const useSignOut = async () => {
+  const auth = getAuth();
+  const {
+    toast: { toastShow },
+    users: { delInfo },
+  } = store.getState();
+
+  await signOut(auth)
+    .then(() => {
+      delInfo();
+      toastShow({ id: `toast-login--fail-${uuidv4()}`, title: '로그아웃되었습니다.' });
+    })
+    .catch((e) => {
+      console.log(e);
+      toastShow({
+        id: `toast-login--fail-${uuidv4()}`,
+        title: `로그아웃 실패! 다시 확인하세요 : ${e.message}`,
+      });
+    });
+};
 
 const useOathSignIn = () => {
   const {
     users: { isLogin },
   } = store.getState();
 
-  return isLogin ? useSignIn : useSignOut;
+  return !isLogin ? useSignIn() : useSignOut();
+};
+
+export const useAuthStateChange = async (setUserInfo: (user: UserInfoType) => void) => {
+  const auth = getAuth();
+
+  return onAuthStateChanged(auth, (user) => {
+    if (user) {
+      return setUserInfo({
+        id: user.uid,
+        email: user.email || '',
+        name: user.displayName || '',
+        photoUrl: user.photoURL || '',
+        providerId: user.providerId,
+        creationTime: user.metadata.creationTime || '',
+        lastSiginTime: user.metadata.lastSignInTime || '',
+      });
+    }
+
+    setUserInfo(emptyUsersInfo);
+  });
 };
 
 export default useOathSignIn;

@@ -1,29 +1,14 @@
+import { UserInfoType } from '@shoppers/types/user';
 import { SliceType } from '.';
 
 interface State {
   isLogin: boolean;
-  userInfo: {
-    email: string;
-    name: string;
-    photoUrl: string;
-    providerId: string;
-    creationTime: string;
-    lastSiginTime: string;
-    token: string;
-  }[];
+  userInfo: UserInfoType[];
 }
 
 interface Action {
-  setInfo: (payload: {
-    email: string;
-    name: string;
-    photoUrl: string;
-    providerId: string;
-    creationTime: string;
-    lastSiginTime: string;
-    token: string;
-  }) => void;
-  delInfo: (email: string) => void;
+  setInfo: (payload: UserInfoType) => void;
+  delInfo: () => void;
 }
 
 export type UserSliceType = State & Action;
@@ -34,12 +19,13 @@ export const userSlice: SliceType<UserSliceType> = (set) => ({
   ...initialState,
   setInfo: (payload) =>
     set(({ users }) => {
+      users.delInfo();
       users.isLogin = true;
-      users.userInfo = [...users.userInfo, payload];
+      users.userInfo = [payload];
     }),
-  delInfo: (payload) => {
+  delInfo: () => {
     set(({ users }) => {
-      users.userInfo.filter(({ email }) => email === payload);
+      users.userInfo = [];
 
       if (users.userInfo.length === 0) {
         users.isLogin = false;
