@@ -73,6 +73,9 @@ const useOathSignIn = () => {
 
 export const useAuthStateChange = async (setUserInfo: (user: UserInfoType) => void) => {
   const auth = getAuth();
+  const {
+    users: { delInfo },
+  } = store.getState();
 
   return onAuthStateChanged(auth, (user) => {
     if (user) {
@@ -87,6 +90,7 @@ export const useAuthStateChange = async (setUserInfo: (user: UserInfoType) => vo
       });
     }
 
+    delInfo();
     setUserInfo(emptyUsersInfo);
   });
 };
