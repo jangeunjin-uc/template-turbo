@@ -9,6 +9,7 @@ import { v4 as uuidv4 } from 'uuid';
 import { store } from '@shoppers/store';
 import { UserInfoType, emptyUsersInfo } from '@shoppers/types/user';
 import { firebaseAuth } from '../../firebase.config';
+import getDatabaseRealtime from './getDatabaseRealtime';
 
 const useSignIn = async () => {
   const googleProvider = new GoogleAuthProvider();
@@ -18,9 +19,13 @@ const useSignIn = async () => {
     users: { setInfo },
   } = store.getState();
 
+  const authUid = await getDatabaseRealtime(`/admin_auth`);
+
   await signInWithPopup(firebaseAuth, googleProvider)
     .then((result) => {
       const { user } = result;
+
+      const auth = authUid === user.uid ? 'ADMIN' : 'USER';
 
       setInfo({
         id: uuidv4(),
@@ -30,6 +35,7 @@ const useSignIn = async () => {
         providerId: user.providerId,
         creationTime: user.metadata.creationTime || '',
         lastSiginTime: user.metadata.lastSignInTime || '',
+        auth,
       });
       toastShow({ id: `toast-login--success-${uuidv4()}`, title: '성공적으로 로그인되었습니다.' });
     })
@@ -87,6 +93,7 @@ export const useAuthStateChange = async (setUserInfo: (user: UserInfoType) => vo
         providerId: user.providerId,
         creationTime: user.metadata.creationTime || '',
         lastSiginTime: user.metadata.lastSignInTime || '',
+        auth: '',
       });
     }
 

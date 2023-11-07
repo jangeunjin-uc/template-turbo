@@ -6,9 +6,10 @@ export interface UserInfoType {
   providerId: string;
   creationTime: string;
   lastSiginTime: string;
+  auth: 'ADMIN' | 'USER' | '';
 }
 
-export const emptyUsersInfo = {
+export const emptyUsersInfo: UserInfoType = {
   id: '',
   email: '',
   name: '',
@@ -16,4 +17,5 @@ export const emptyUsersInfo = {
   providerId: '',
   creationTime: '',
   lastSiginTime: '',
+  auth: '',
 };
