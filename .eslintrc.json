@@ -82,6 +82,11 @@
             "pattern": "@shoppers/**",
             "group": "internal",
             "position": "before"
+          },
+          {
+            "pattern": "@findYourLover/**",
+            "group": "internal",
+            "position": "before"
           }
         ]
       }
