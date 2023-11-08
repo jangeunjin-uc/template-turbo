@@ -1,3 +1,9 @@
+import InsertInfo from './InsertInfo';
+
 export default function Main() {
-  return <div>main</div>;
+  return (
+    <div>
+      <InsertInfo />
+    </div>
+  );
 }

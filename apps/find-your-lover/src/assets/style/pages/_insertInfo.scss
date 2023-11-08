@@ -1,0 +1,58 @@
+@use '../abstract/mixin' as *;
+@use '../abstract/variable' as *;
+
+.insert {
+  &-container {
+    display: flex;
+    flex: 1 1 auto;
+    flex-direction: column;
+    height: 100%;
+    margin: 4rem auto 0;
+
+    .title {
+      @include font-18(700);
+
+      text-align: center;
+    }
+  }
+
+  &-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin-top: 2rem;
+    padding: 1rem 1.2rem;
+    border: 1px solid $black;
+    border-radius: 16px;
+    gap: 2rem;
+
+    .input-area {
+      display: flex;
+      flex-direction: column;
+      gap: 1.5rem;
+
+      /* input 내 태그 */
+      .input {
+        &-wrap {
+          flex: 1 1 auto;
+          min-width: 36rem;
+        }
+
+        &-label {
+          min-width: 10rem;
+        }
+      }
+    }
+
+    .insert-actions {
+      display: flex;
+      align-items: center;
+      margin-left: auto;
+
+      button + button {
+        margin-left: 1rem;
+      }
+    }
+  }
+}
