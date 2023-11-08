@@ -4,7 +4,7 @@ import { InputHTMLAttributes, ReactNode, forwardRef } from 'react';
 import { SIZE_TYPE, SizeType } from '../../../types/constants';
 import Button from '../../common/Button';
 
-export interface InputProps extends Omit<InputHTMLAttributes<HTMLInputElement>, 'csss'> {
+export interface InputProps extends Omit<InputHTMLAttributes<HTMLInputElement>, 'css'> {
   id: string;
   className?: string;
   variant: 'inputOnly' | 'withLabel' | 'withButton';
