@@ -57,17 +57,21 @@
         display: flex;
         align-items: center;
         gap: 1.2rem;
+
         .btn-rnb {
           &-login {
             padding: 0;
             color: $white;
+
             .btn__label {
               font-weight: 600;
             }
           }
+
           &-logout {
             padding: 0;
             color: $white;
+
             .btn__label {
               font-weight: 600;
             }
