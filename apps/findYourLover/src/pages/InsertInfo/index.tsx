@@ -1,10 +1,12 @@
 import ProfileAvatar from '@findYourLover/components/ProfileAvatar';
 import { CommonLayout } from '@findYourLover/layout';
+import { store } from '@findYourLover/store';
 import { LoversList } from '@findYourLover/types';
 import { Pencil, Trash } from '@phosphor-icons/react';
 import { ChangeEvent, useCallback, useState } from 'react';
 import { Button, Input } from 'ui';
 import { v4 as uuidv4 } from 'uuid';
+import shallow from 'zustand/shallow';
 
 export default function InsertInfo() {
   const [lover, setLover] = useState<LoversList>({
@@ -15,6 +17,7 @@ export default function InsertInfo() {
     photoFile: null,
   });
   const [loverList, setLoverList] = useState<LoversList[]>([]);
+  const [toastShow] = store(({ toast }) => [toast.toastShow], shallow);
 
   const handleChangeLover = useCallback(
     (e: ChangeEvent<HTMLInputElement>) => {
@@ -42,6 +45,10 @@ export default function InsertInfo() {
     setLover({ id: uuidv4(), name: '', adjective: '', photoUrl: null, photoFile: null });
 
   const handleSaveList = () => {
+    if (loverList && loverList.length > 2) {
+      return toastShow({ id: uuidv4(), title: '15개 미만으로 등록 가능합니다.' });
+    }
+
     const existIdx = loverList.findIndex((item) => lover.id === item.id);
 
     emptyLover();

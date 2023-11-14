@@ -10,7 +10,7 @@ export default function ProfileAvatar({
   name,
 }: ProfileAvatarProps) {
   return (
-    <div className="prpfile-avatar">
+    <div className="profile-avatar">
       <div className="profile-img-wrapper">
         <img
           src={photoUrl || '@findYourLover/assets/images/sample/avatar_default.png'}

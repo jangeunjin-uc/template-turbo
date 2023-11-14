@@ -75,7 +75,7 @@ importers:
         specifier: latest
         version: 1.10.12
 
-  apps/find-your-lover:
+  apps/findYourLover:
     dependencies:
       '@phosphor-icons/react':
         specifier: ^2.0.10
