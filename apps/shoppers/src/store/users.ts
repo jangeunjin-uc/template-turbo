@@ -20,8 +20,11 @@ export const userSlice: SliceType<UserSliceType> = (set) => ({
   setInfo: (payload) =>
     set(({ users }) => {
       users.delInfo();
-      users.isLogin = true;
       users.userInfo = [payload];
+
+      if (payload.email !== '') {
+        users.isLogin = true;
+      }
     }),
   delInfo: () => {
     set(({ users }) => {
